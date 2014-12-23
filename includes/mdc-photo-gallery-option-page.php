@@ -1,7 +1,9 @@
 <?php
-function mdc_gallery_menu(){
-	add_menu_page('Gallery Settings', 'Gallery Settings', 'administrator', 'mdc-photo-gallery-settings', 'mdc_photo_gallery_option_page', NULL, 42.02);
+
+function mdc_gallery_menu() {
+    add_menu_page('Gallery Settings', 'Gallery Settings', 'administrator', 'mdc-photo-gallery-settings', 'mdc_photo_gallery_option_page', plugins_url('mdc-photo-gallery').'/assets/img/settings.png', 42.02);
 }
+
 add_action('admin_menu', 'mdc_gallery_menu');
 
 function mdc_photo_gallery_option_page() {
@@ -49,17 +51,17 @@ function mdc_photo_gallery_option_page() {
                                             <li>Copy the shortcode below.<br /><span id="generate" ></span></li>
                                             <li>Go to <a href="<?php echo admin_url(); ?>post-new.php?post_type=page" target="_blank">Pages > Add New</a>. Give a title and paste the shortcode in the content editor area.</li>
                                             <li>Publish the page.</li>
-                                            <li>Or, give a page title and click the button below to do it for you-</li>
+                                            <li>Or, give a page title, click the button below and let us do it for you-</li>
                                         </ol>
-                                        <input type="text" name="faq_title" placeholder="Page Title" required>
-                                        <input id="submit" type="submit" class="button button-primary gen-page-btn" value="Generate FAQ Page" />
+                                        <input type="text" name="gallery_title" placeholder="Page Title" required>
+                                        <input id="submit" type="submit" class="button button-primary gen-page-btn" value="Generate Gallery Page" />
                                     </form>
                                 </div>
                                 <?php
                                 if ($_POST['gene-page']) {
                                     // Create post object
                                     $my_post = array(
-                                        'post_title' => $_POST['faq_title'],
+                                        'post_title' => $_POST['gallery_title'],
                                         'post_content' => $_POST['shortcode'],
                                         'post_status' => 'publish',
                                         'post_type' => 'page'
@@ -67,7 +69,7 @@ function mdc_photo_gallery_option_page() {
 
                                     // Insert the post into the database
                                     $faq_pid = wp_insert_post($my_post);
-                                    echo "<span class=\"gen-success\">FAQ page has been created. <a href=\"" . get_the_permalink($faq_pid) . "\" target=\"_blank\">Click here</a> to view the page.</span>";
+                                    echo "<span class=\"gen-success\">Gallery page has been created. <a href=\"" . get_the_permalink($faq_pid) . "\" target=\"_blank\">Click here</a> to view the page.</span>";
                                 }
                                 ?>
 
@@ -82,7 +84,7 @@ function mdc_photo_gallery_option_page() {
                             <h3><span>MDC Photo Gallery</span></h3>
                             <div class="inside">
                                 <a target="_blank" href="http://mukto.medhabi.com/">
-                                    <img src="<?php echo plugins_url('mdc-photo-gallery')?>/assets/img/mukto90.png" style="width: 130px" />
+                                    <img src="<?php echo plugins_url('mdc-photo-gallery') ?>/assets/img/mukto90.png" style="width: 130px" />
                                 </a>
                                 <p>By <a href="http://mukto.medhabi.com" target="_blank">Nazmul Ahsan</a>, a passionate PHP Programmer and WordPress Ninja.</p>
                             </div>
