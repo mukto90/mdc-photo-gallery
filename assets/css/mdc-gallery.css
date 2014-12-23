@@ -1,0 +1,9 @@
+.mdc-gallery {
+  clear: both;
+}
+.mdc-gallery-item {
+  float: left;
+  margin: 3px;
+  min-width: 100px;
+  width: 24%;
+}
