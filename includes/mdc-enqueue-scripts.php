@@ -51,7 +51,40 @@ function mdc_photo_gallery_enqueue_script() {
     wp_enqueue_script('jquery-fancybox-buttons', $plugin_url . '/assets/fancybox/helpers/jquery.fancybox-buttons.js', array(), '1.0.0', false);
     wp_enqueue_script('jquery-fancybox-thumbs', $plugin_url . '/assets/fancybox/helpers/jquery.fancybox-thumbs.js', array(), '1.0.0', false);
     wp_enqueue_script('jquery-fancybox-media', $plugin_url . '/assets/fancybox/helpers/jquery.fancybox-media.js', array(), '1.0.0', false);
-    wp_enqueue_script('mdc-custom-jquery', $plugin_url . '/assets/js/fancybox.js', array(), '1.0.0', false);
+    // wp_enqueue_script('mdc-custom-jquery', $plugin_url . '/assets/js/fancybox.js', array(), '1.0.0', false);
 }
 
 add_action('wp_enqueue_scripts', 'mdc_photo_gallery_enqueue_script');
+
+function mdc_add_to_head() {
+?>
+<script>
+$(document).ready(function() {
+	$(".fancybox-thumb").fancybox({
+		prevEffect	: 'none',
+		nextEffect	: 'none',
+		helpers	: {
+			<?php if(get_option('mdc_enable_gallery_title') == 1){ ?>
+			title	: {
+				type: 'inside'
+			},
+			<?php } else{?>
+			title: null,
+			<?php } if(get_option('mdc_enable_gallery_button') == 1){?>
+			buttons : true,
+			<?php } else{?>
+			buttons : false,
+			<?php } if(get_option('mdc_enable_gallery_thumbnail') == 1){?>
+			thumbs	: {
+				width	: 50,
+				height	: 50
+			}
+			<?php } ?>
+		}
+	});
+});
+</script>
+    <?php
+}
+
+add_action('wp_head', 'mdc_add_to_head');

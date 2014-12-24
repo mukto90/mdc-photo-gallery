@@ -4,7 +4,7 @@ $(document).ready(function() {
 		nextEffect	: 'none',
 		helpers	: {
 			title	: {
-				type: 'outside'
+				type: 'inside'
 			},
 			thumbs	: {
 				width	: 50,

@@ -28,12 +28,12 @@ function mdc_photo_gallery_cpt() {
         'show_in_menu' => true,
         'query_var' => true,
         'rewrite' => array('slug' => 'gallery'),
-        'capability_type' => 'post',
+        'capability_type' => 'page',
         'has_archive' => true,
         'hierarchical' => false,
         'menu_position' => 42.01,
         'menu_icon' => plugins_url('mdc-photo-gallery').'/assets/img/icon.png',
-        'supports' => array('title', 'editor', 'thumbnail')
+        'supports' => array('title', 'thumbnail')
     );
 
     register_post_type('gallery', $args);

@@ -18,7 +18,7 @@ function mdc_photo_gallery_shortcode($atts) {
             $thumb = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'thumbnail_size');
             $url = $thumb['0'];
             echo "<div class='mdc-gallery-item'>
-					<a href='$url' class='fancybox-thumb' rel='fancybox-thumb' ><img src='$url' title='$title' alt='$title' /></a>
+					<a href='$url' class='fancybox-thumb' rel='fancybox-thumb' title='$title' alt='$title'><img src='$url' title='$title' alt='$title' /></a>
 				</div>";
         endwhile;
         echo "</div>";
